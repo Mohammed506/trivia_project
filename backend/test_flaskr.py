@@ -68,17 +68,17 @@ class TriviaTestCase(unittest.TestCase):
 
 
     
-    # def test_delete_question(self):
-    #     res = self.client().delete('/questions/7')
-    #     data = json.loads(res.data)
+    def test_delete_question(self):
+        res = self.client().delete('/questions/7')
+        data = json.loads(res.data)
 
-    #     question = Question.query.filter(Question.id==7).one_or_none()
+        question = Question.query.filter(Question.id==7).one_or_none()
 
-    #     self.assertEqual(res.status_code,200)
-    #     self.assertEqual(data['success'],True)
-    #     self.assertEqual(data['deleted'],7)
-    #     self.assertTrue(data['total_questions'])
-    #     self.assertEqual(question,None)
+        self.assertEqual(res.status_code,200)
+        self.assertEqual(data['success'],True)
+        self.assertEqual(data['deleted'],7)
+        self.assertTrue(data['total_questions'])
+        self.assertEqual(question,None)
 
 
 
