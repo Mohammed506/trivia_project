@@ -169,10 +169,8 @@ def create_app(test_config=None):
         if quiz_category['id'] not in quiz_category_list:
             abort(404)
 
-
         if (int(quiz_category['id']) == 0):
             questions = Question.query.all()
-         
         else:
             questions = Question.query.filter(
                 Question.category == quiz_category['id']).all()
@@ -195,11 +193,11 @@ def create_app(test_config=None):
 
                 return jsonify({
                     'success': True,
-                    'question': next_question})
+                    'question': next_question}), 200
 
         return jsonify({
             'success': True
-        })
+        }), 200
 
     '''
   @TODO: 
