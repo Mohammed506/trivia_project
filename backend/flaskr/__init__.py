@@ -165,9 +165,14 @@ def create_app(test_config=None):
         prev_question = body.get('previous_questions')
 
         quiz_category = body.get('quiz_category')
+        quiz_category_list = ['0', '1', '2', '3', '4', '5']
+        if quiz_category['id'] not in quiz_category_list:
+            abort(404)
+
 
         if (int(quiz_category['id']) == 0):
             questions = Question.query.all()
+         
         else:
             questions = Question.query.filter(
                 Question.category == quiz_category['id']).all()
